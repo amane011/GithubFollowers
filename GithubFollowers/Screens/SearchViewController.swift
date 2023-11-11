@@ -31,7 +31,7 @@ class SearchViewController: UIViewController {
     
     @objc func pushFollowerListVC(){
         guard isUsernameEntered else{
-            print("Username is empty")
+            presentCustomAlert(title: "Empty Username", message: "Please enter a valid username", buttonTitle: "Ok")
             return
         }
         let userName = usernameTextField.text!
