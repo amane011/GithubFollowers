@@ -11,6 +11,10 @@
 		C81997322AFF2B0100E6E353 /* CustomTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81997312AFF2B0100E6E353 /* CustomTitleLabel.swift */; };
 		C81997342AFF2BBE00E6E353 /* CustomAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81997332AFF2BBE00E6E353 /* CustomAlertViewController.swift */; };
 		C81997362AFF3CA800E6E353 /* UIViewController+ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81997352AFF3CA800E6E353 /* UIViewController+ext.swift */; };
+		C819973E2AFFE88A00E6E353 /* Follower.swift in Sources */ = {isa = PBXBuildFile; fileRef = C819973D2AFFE88A00E6E353 /* Follower.swift */; };
+		C81997402AFFE91C00E6E353 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = C819973F2AFFE91C00E6E353 /* User.swift */; };
+		C81997432AFFEE9A00E6E353 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81997422AFFEE9A00E6E353 /* NetworkManager.swift */; };
+		C81997462B03092D00E6E353 /* ErrorMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81997452B03092D00E6E353 /* ErrorMessage.swift */; };
 		C8D2847B2AEDA6BA00B8E58A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D2847A2AEDA6BA00B8E58A /* AppDelegate.swift */; };
 		C8D2847D2AEDA6BA00B8E58A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D2847C2AEDA6BA00B8E58A /* SceneDelegate.swift */; };
 		C8D2847F2AEDA6BA00B8E58A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D2847E2AEDA6BA00B8E58A /* ViewController.swift */; };
@@ -28,6 +32,10 @@
 		C81997312AFF2B0100E6E353 /* CustomTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTitleLabel.swift; sourceTree = "<group>"; };
 		C81997332AFF2BBE00E6E353 /* CustomAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlertViewController.swift; sourceTree = "<group>"; };
 		C81997352AFF3CA800E6E353 /* UIViewController+ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+ext.swift"; sourceTree = "<group>"; };
+		C819973D2AFFE88A00E6E353 /* Follower.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Follower.swift; sourceTree = "<group>"; };
+		C819973F2AFFE91C00E6E353 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		C81997422AFFEE9A00E6E353 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		C81997452B03092D00E6E353 /* ErrorMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorMessage.swift; sourceTree = "<group>"; };
 		C8D284772AEDA6BA00B8E58A /* GithubFollowers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GithubFollowers.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8D2847A2AEDA6BA00B8E58A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C8D2847C2AEDA6BA00B8E58A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -83,6 +91,31 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		C819973A2AFFE85300E6E353 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				C819973D2AFFE88A00E6E353 /* Follower.swift */,
+				C819973F2AFFE91C00E6E353 /* User.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		C81997412AFFEE8500E6E353 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				C81997422AFFEE9A00E6E353 /* NetworkManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		C81997442B03090200E6E353 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				C81997452B03092D00E6E353 /* ErrorMessage.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
 		C8D2846E2AEDA6BA00B8E58A = {
 			isa = PBXGroup;
 			children = (
@@ -102,6 +135,9 @@
 		C8D284792AEDA6BA00B8E58A /* GithubFollowers */ = {
 			isa = PBXGroup;
 			children = (
+				C81997442B03090200E6E353 /* Utilities */,
+				C81997412AFFEE8500E6E353 /* Managers */,
+				C819973A2AFFE85300E6E353 /* Models */,
 				C81997392AFF407400E6E353 /* Extensions */,
 				C81997382AFF403A00E6E353 /* CustomViews */,
 				C81997372AFF3FEA00E6E353 /* Screens */,
@@ -191,10 +227,14 @@
 				C819972E2AFF2A9B00E6E353 /* CustomBodyLabel.swift in Sources */,
 				C81997322AFF2B0100E6E353 /* CustomTitleLabel.swift in Sources */,
 				C8D284932AEE068600B8E58A /* CustomButton.swift in Sources */,
+				C81997402AFFE91C00E6E353 /* User.swift in Sources */,
 				C81997362AFF3CA800E6E353 /* UIViewController+ext.swift in Sources */,
+				C819973E2AFFE88A00E6E353 /* Follower.swift in Sources */,
 				C8D2847B2AEDA6BA00B8E58A /* AppDelegate.swift in Sources */,
 				C8D2848F2AEDEDE700B8E58A /* SearchViewController.swift in Sources */,
 				C81997342AFF2BBE00E6E353 /* CustomAlertViewController.swift in Sources */,
+				C81997462B03092D00E6E353 /* ErrorMessage.swift in Sources */,
+				C81997432AFFEE9A00E6E353 /* NetworkManager.swift in Sources */,
 				C8D284972AFD902800B8E58A /* FolowersListViewController.swift in Sources */,
 				C8D2847D2AEDA6BA00B8E58A /* SceneDelegate.swift in Sources */,
 			);

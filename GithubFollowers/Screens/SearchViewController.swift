@@ -12,7 +12,7 @@ class SearchViewController: UIViewController {
     let logoImageView = UIImageView()
     let usernameTextField  = CustomTextField()
     let callToActionButton = CustomButton(backgroundColor: .systemGreen, title: "Get Followers")
-    var isUsernameEntered : Bool { return ((usernameTextField.text?.isEmpty) == nil) }
+    var isUsernameEntered : Bool { return !usernameTextField.text!.isEmpty }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +23,11 @@ class SearchViewController: UIViewController {
         createDismissKeyboardSwipeGesture()
         
     }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: true)
+    }
+    
     
     private func createDismissKeyboardSwipeGesture(){
         let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:)))
@@ -34,22 +39,13 @@ class SearchViewController: UIViewController {
             presentCustomAlert(title: "Empty Username", message: "Please enter a valid username", buttonTitle: "Ok")
             return
         }
-        let userName = usernameTextField.text!
-        if (userName.isValidEmail){
-            let followeListVC = FolowersListViewController()
-            followeListVC.userName = userName
-            followeListVC.title = userName
-            navigationController?.pushViewController(followeListVC, animated: true)
-        }else{
-            
-        }
+        let followeListVC = FolowersListViewController()
+        followeListVC.userName = usernameTextField.text!
+        followeListVC.title = usernameTextField.text!
+        navigationController?.pushViewController(followeListVC, animated: true)
         
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        navigationController?.isNavigationBarHidden = true
-    }
     
     private func configureLogoImageView() {
         view.addSubview(logoImageView)
