@@ -23,10 +23,10 @@ class SearchViewController: UIViewController {
         createDismissKeyboardSwipeGesture()
         
     }
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        navigationController?.setNavigationBarHidden(true, animated: true)
-    }
+    override func viewWillAppear(_ animated: Bool){
+           super.viewWillAppear(animated)
+           navigationController?.setNavigationBarHidden(true, animated: true) 
+       }
     
     
     private func createDismissKeyboardSwipeGesture(){
@@ -39,7 +39,7 @@ class SearchViewController: UIViewController {
             presentCustomAlert(title: "Empty Username", message: "Please enter a valid username", buttonTitle: "Ok")
             return
         }
-        let followeListVC = FolowersListViewController()
+        let followeListVC = FollowersListViewController()
         followeListVC.userName = usernameTextField.text!
         followeListVC.title = usernameTextField.text!
         navigationController?.pushViewController(followeListVC, animated: true)
