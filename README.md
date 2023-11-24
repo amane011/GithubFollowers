@@ -1,5 +1,8 @@
 Github Repos
-Description
+
+
+Description:
+
 Github Repos is a dynamic application that leverages the GitHub API to provide users with detailed insights into GitHub profiles. It allows you to fetch user details, explore their followers, and view their repositories. 
 You can also favorite repositories for quick access in the future.
 
