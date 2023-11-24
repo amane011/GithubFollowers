@@ -82,4 +82,38 @@ class NetworkManager {
         }
         task.resume()
     }
+    
+    func getRepos(for username: String, completed:  @escaping (Result<[Repos], ErrorMessage>) -> Void){
+        let endPoint = baseUrl + "\(username)/repos"
+        guard let url = URL(string: endPoint) else {
+            completed(.failure(.invalidUsername))
+            return
+        }
+        let task = URLSession.shared.dataTask(with: url) { data, response, error in
+            if let _ = error {
+                completed(.failure(.unableToComplete))
+                return
+            }
+            
+            guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
+                completed(.failure(.invalidResponse))
+                return
+            }
+            
+            guard let data = data else{
+                completed(.failure(.invalidData))
+                return
+            }
+            
+            do {
+                let decoder = JSONDecoder()
+                decoder.keyDecodingStrategy = .convertFromSnakeCase
+                let repos = try decoder.decode([Repos].self, from: data)
+                completed(.success(repos))
+            } catch {
+                completed(.failure(.invalidData))
+            }
+        }
+        task.resume()
+    }
 }

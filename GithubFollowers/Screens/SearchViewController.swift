@@ -11,7 +11,7 @@ class SearchViewController: UIViewController {
     
     let logoImageView = UIImageView()
     let usernameTextField  = CustomTextField()
-    let callToActionButton = CustomButton(backgroundColor: .systemGreen, title: "Get Followers")
+    let callToActionButton = CustomButton(backgroundColor: .systemGreen, title: "Get User Info")
     var isUsernameEntered : Bool { return !usernameTextField.text!.isEmpty }
     
     override func viewDidLoad() {
@@ -39,10 +39,15 @@ class SearchViewController: UIViewController {
             presentCustomAlert(title: "Empty Username", message: "Please enter a valid username", buttonTitle: "Ok")
             return
         }
-        let followeListVC = FollowersListViewController()
-        followeListVC.userName = usernameTextField.text!
-        followeListVC.title = usernameTextField.text!
-        navigationController?.pushViewController(followeListVC, animated: true)
+        
+        let userInfoVC = UserInfoViewController()
+        userInfoVC.userName = usernameTextField.text!
+        userInfoVC.title =   usernameTextField.text!
+        navigationController?.pushViewController(userInfoVC, animated: true)
+//        let followeListVC = FollowersListViewController()
+//        followeListVC.userName = usernameTextField.text!
+//        followeListVC.title = usernameTextField.text!
+//        navigationController?.pushViewController(followeListVC, animated: true)
         
     }
     
@@ -93,20 +98,4 @@ extension SearchViewController : UITextFieldDelegate {
     }
 }
 
-extension String {
-    
-    var isValidEmail: Bool {
-        let emailFormat         = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
-        let emailPredicate      = NSPredicate(format: "SELF MATCHES %@", emailFormat)
-        return emailPredicate.evaluate(with: self)
-    }
-    
-    
-    var isValidPassword: Bool {
-        //Regex restricts to 8 character minimum, 1 capital letter, 1 lowercase letter, 1 number
-        //If you have different requirements a google search for "password requirement regex" will help
-        let passwordFormat      = "(?=.*[A-Z])(?=.*[0-9])(?=.*[a-z]).{8,}"
-        let passwordPredicate   = NSPredicate(format: "SELF MATCHES %@", passwordFormat)
-        return passwordPredicate.evaluate(with: self)
-    }
-}
+

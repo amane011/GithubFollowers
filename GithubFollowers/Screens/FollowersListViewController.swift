@@ -1,11 +1,15 @@
 //
-//  FolowersListViewController.swift
+//  FollowersListViewController.swift
 //  GithubFollowers
 //
 //  Created by Ankit  Mane on 11/9/23.
 //
 
 import UIKit
+
+protocol FollowerListVCDelegate: AnyObject {
+    func didRequestFollowers(for username: String)
+}
 
 class FollowersListViewController: UIViewController {
     
@@ -139,10 +143,17 @@ extension FollowersListViewController: UICollectionViewDelegate {
         let activeArray = isSearching ? filteredFollowers : followers
         let follower = activeArray[indexPath.item]
         
-        let destVC = UserInfoViewController()
-        destVC.userName = follower.login
-        let navContoller = UINavigationController(rootViewController: destVC)
-        present(navContoller, animated: true)
+        
+        let userInfoVC = UserInfoViewController()
+        userInfoVC.userName = follower.login
+        userInfoVC.title =   follower.login
+        navigationController?.pushViewController(userInfoVC, animated: true)
+        
+//        let destVC = UserInfoViewController()
+//        destVC.userName = follower.login
+//        destVC.delegate = self
+//        let navContoller = UINavigationController(rootViewController: destVC)
+//        present(navContoller, animated: true)
         
     }
 }
@@ -159,4 +170,18 @@ extension FollowersListViewController: UISearchResultsUpdating, UISearchBarDeleg
         isSearching = false
         updateData(on: followers)
     }
+}
+
+extension FollowersListViewController: FollowerListVCDelegate{
+    func didRequestFollowers(for username: String) {
+        self.userName = username
+        page = 1
+        title = username
+        followers.removeAll()
+        filteredFollowers.removeAll()
+        collectionView.setContentOffset(.zero, animated: true)
+        getFollowers(page: page)
+    }
+    
+    
 }
